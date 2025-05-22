@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Caperucita Roja - Anime Cómic</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #ffd1dc, #f4f4f9);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    .scene {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🌲</text></svg>') 2% 85% no-repeat,
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🌲</text></svg>') 95% 80% no-repeat;
+      background-size: 100px;
+    }
+    .character {
+      position: absolute;
+      font-size: 2.5em;
+      font-weight: bold;
+      padding: 1em;
+      border-radius: 12px;
+      color: white;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      transform: scale(0);
+    }
+    #caperucita {
+      left: 10%;
+      top: 30%;
+      background: linear-gradient(135deg, #ff6b81, #ff3366);
+    }
+    #lobo {
+      right: 10%;
+      top: 30%;
+      background: linear-gradient(135deg, #6c5ce7, #9b59b6);
+    }
+    #abuelita {
+      left: 40%;
+      bottom: 15%;
+      background: linear-gradient(135deg, #fab1a0, #f39c12);
+    }
+    .caption {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2em;
+      color: #2d3436;
+      font-family: 'Arial', sans-serif;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 0.5em 2em;
+      border-radius: 10px;
+      border: 2px solid #d63031;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="scene">
+    <div class="caption">¡Los personajes principales del cuento!</div>
+    <div id="caperucita" class="character">Caperucita Roja</div>
+    <div id="lobo" class="character">El Lobo</div>
+    <div id="abuelita" class="character">La Abuelita</div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@mojs/core"></script>
+  <script>
+    // Animación de Caperucita
+    const caperucitaAnim = new mojs.Html({
+      el: '#caperucita',
+      scale: { 0: 1 },
+      opacity: { 0: 1 },
+      x: { 0: 120 },
+      duration: 1500,
+      delay: 200,
+      easing: 'elastic.out(1, 0.5)'
+    }).play();
+
+    // Animación del Lobo
+    const loboAnim = new mojs.Html({
+      el: '#lobo',
+      scale: { 0: 1 },
+      opacity: { 0: 1 },
+      x: { 0: -120 },
+      duration: 1500,
+      delay: 400,
+      easing: 'elastic.out(1, 0.5)'
+    }).play();
+
+    // Animación de la Abuelita
+    const abuelitaAnim = new mojs.Html({
+      el: '#abuelita',
+      scale: { 0: 1 },
+      opacity: { 0: 1 },
+      y: { 100: 0 },
+      duration: 1500,
+      delay: 600,
+      easing: 'bounce.out'
+    }).play();
+
+    // Efectos de corazones entre Caperucita y el Lobo
+    const burst = new mojs.Burst({
+      left: '50%',
+      top: '40%',
+      radius: { 0: 100 },
+      count: 7,
+      children: {
+        shape: 'heart',
+        fill: ['#ff6b81', '#ff3366', '#fd79a8'],
+        duration: 2000,
+        delay: 1500,
+        repeat: 999,
+        scale: { 1: 0 },
+        pathScale: [.8, null],
+        degreeShift: 'rand(-20, 20)',
+        easing: 'quad.out'
+      }
+    }).play();
+
+    // Efecto de enojo para la abuelita
+    const angryBurst = new mojs.Burst({
+      left: '40%',
+      bottom: '25%',
+      radius: { 0: 50 },
+      count: 5,
+      children: {
+        shape: 'cross',
+        stroke: '#d63031',
+        strokeWidth: 5,
+        duration: 1000,
+        delay: 2000,
+        repeat: 999,
+        scale: { 1: 0 },
+        easing: 'quad.out'
+      }
+    }).play();
+
+    // Interactividad con los personajes
+    document.querySelectorAll('.character').forEach(char => {
+      char.addEventListener('mouseover', (e) => {
+        new mojs.Html({
+          el: e.target,
+          scale: { 1: 1.2 },
+          duration: 300,
+          easing: 'elastic.out'
+        }).play();
+      });
+      
+      char.addEventListener('mouseout', (e) => {
+        new mojs.Html({
+          el: e.target,
+          scale: { 1.2: 1 },
+          duration: 300,
+          easing: 'elastic.out'
+        }).play();
+      });
+    });
+  </script>
+
+</body>
+</html>
