@@ -10,3 +10,30 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+// Lógica para mostrar/ocultar escenas y navegación
+const escenas = [
+  document.getElementById('escena1'),
+  document.getElementById('escena2')
+];
+let actual = 0;
+
+function mostrarEscena(idx) {
+  escenas.forEach((esc, i) => {
+    esc.style.display = (i === idx) ? '' : 'none';
+  });
+}
+
+document.getElementById('prevBtn').onclick = () => {
+  if (actual > 0) {
+    actual--;
+    mostrarEscena(actual);
+  }
+};
+document.getElementById('nextBtn').onclick = () => {
+  if (actual < escenas.length - 1) {
+    actual++;
+    mostrarEscena(actual);
+  }
+};
+mostrarEscena(actual);

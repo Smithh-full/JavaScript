@@ -7,7 +7,9 @@
   <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-  <div class="scene">
+  <button class="nav-btn left" id="prevBtn" title="Anterior">&#8592;</button>
+  <button class="nav-btn right" id="nextBtn" title="Siguiente">&#8594;</button>
+  <div class="scene" id="escena1">
     <div class="caption">Érase una vez, en un bosque de píxeles...</div>
     <div class="personaje" id="manzana">
       <span class="emoji">🍎</span>
@@ -24,6 +26,19 @@
     <div class="personaje" id="naranja">
       <span class="emoji">🍊</span>
       <span class="nombre">Cazador</span>
+    </div>
+  </div>
+  <div class="scene" id="escena2" style="display:none;">
+    <div class="caption">Caperucita Roja cruza el bosque recolectando flores...</div>
+    <div class="personaje" id="manzana2" style="left: 20vw; top: 60vh;">
+      <span class="emoji">🍎</span>
+      <span class="nombre">Caperucita Roja</span>
+    </div>
+    <div class="flores">
+      <span class="flor" style="left: 35vw; top: 70vh;">🌸</span>
+      <span class="flor" style="left: 40vw; top: 65vh;">🌼</span>
+      <span class="flor" style="left: 50vw; top: 75vh;">🌷</span>
+      <span class="flor" style="left: 60vw; top: 68vh;">🌻</span>
     </div>
   </div>
   <script type="module" src="./js/main.js"></script>
