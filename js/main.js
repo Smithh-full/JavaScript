@@ -14,7 +14,8 @@ window.addEventListener('DOMContentLoaded', () => {
 // Lógica para mostrar/ocultar escenas y navegación
 const escenas = [
   document.getElementById('escena1'),
-  document.getElementById('escena2')
+  document.getElementById('escena2'),
+  document.getElementById('escena3')
 ];
 let actual = 0;
 

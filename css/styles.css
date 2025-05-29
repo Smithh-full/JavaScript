@@ -162,3 +162,39 @@ body {
   0% { left: 20vw; }
   100% { left: 60vw; }
 }
+.dialogo {
+  position: absolute;
+  min-width: 180px;
+  max-width: 320px;
+  background: #fffbe8;
+  color: #222;
+  font-size: 1.1em;
+  border-radius: 18px;
+  border: 2px solid #a084ca;
+  box-shadow: 2px 2px 8px #0002;
+  padding: 0.7em 1.2em;
+  z-index: 20;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-align: left;
+  animation: aparecer 1.2s cubic-bezier(.68,-0.55,.27,1.55) both;
+}
+#dialogo-caperucita::before {
+  content: '';
+  position: absolute;
+  left: 24px;
+  bottom: -18px;
+  border-width: 12px 12px 0 12px;
+  border-style: solid;
+  border-color: #fffbe8 transparent transparent transparent;
+  filter: drop-shadow(0 2px 2px #a084ca);
+}
+#dialogo-lobo::before {
+  content: '';
+  position: absolute;
+  right: 24px;
+  bottom: -18px;
+  border-width: 12px 12px 0 12px;
+  border-style: solid;
+  border-color: #fffbe8 transparent transparent transparent;
+  filter: drop-shadow(0 2px 2px #a084ca);
+}
